@@ -1,0 +1,43 @@
+{
+  "name": "medicine-cabinet-ai",
+  "version": "0.1.0",
+  "author": "Rahel Lüthy",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "build:ci": "tsc && bunx vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "start": "vite",
+    "test:ci": "bun test"
+  },
+  "dependencies": {
+    "@langchain/core": "0.3.15",
+    "@langchain/ollama": "0.1.0",
+    "@langchain/community": "0.3.10",
+    "@langchain/langgraph": "0.2.18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1"
+  },
+  "devDependencies": {
+    "bun-types": "1.1.33",
+    "@eslint/js": "^9.9.1",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^9.9.1",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.11",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.4.0",
+    "vite": "^5.4.2"
+  }
+}
