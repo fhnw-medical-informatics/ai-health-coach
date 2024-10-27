@@ -3,12 +3,12 @@ import { ChatPromptTemplate, MessagesPlaceholder } from '@langchain/core/prompts
 import { END } from '@langchain/langgraph/web'
 import { z } from 'zod'
 import { createLlm } from '../llm/llm'
-import { MATH_AGENT_NAME } from './mathAgent'
+import { PHARMACIST_AGENT_NAME } from './pharmacistAgent'
 import { PSYCHOLOGIST_AGENT_NAME } from './psychologistAgent'
 
 export const SUPERVISOR_AGENT_NAME = 'supervisor'
 
-const members = [PSYCHOLOGIST_AGENT_NAME, MATH_AGENT_NAME] as const
+const members = [PSYCHOLOGIST_AGENT_NAME, PHARMACIST_AGENT_NAME] as const
 
 const systemPrompt =
   'You are a supervisor tasked with managing a conversation between the' +

@@ -1,5 +1,5 @@
 {
-  "name": "medicine-cabinet-ai",
+  "name": "ai-health-coach",
   "version": "0.1.0",
   "author": "Rahel Lüthy",
   "private": true,
@@ -21,7 +21,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "bun-types": "1.1.33",

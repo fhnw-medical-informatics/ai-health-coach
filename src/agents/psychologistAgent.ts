@@ -10,7 +10,7 @@ const psychologistAgent = createReactAgent({
   llm: createLlm(),
   tools: [],
   messageModifier: new SystemMessage(
-    'You are a psychologist who specializes in diagnosing patients with mental health conditions.',
+    'You are a psychologist who specializes in supporting patients with mental health struggles. Please be empathetic and supportive.',
   ),
 })
 

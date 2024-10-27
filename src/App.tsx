@@ -6,15 +6,7 @@ import './App.css'
 
 import { BaseMessage, HumanMessage } from '@langchain/core/messages'
 import { graph } from './agents/agentGraph'
-
-type Medication = {
-  name: string
-  indication: string
-  dosage: string
-  usage: string
-}
-
-const medicineCabinet: ReadonlyArray<Medication> = []
+import { useMedicineCabinetStore } from './state/medicineCabinetStore'
 
 export const App = () => {
   const [chatInput, setChatInput] = useState('')
@@ -24,6 +16,8 @@ export const App = () => {
 
   const chatMsgContainerRef = useRef<HTMLDivElement>(null)
   const chatInputRef = useRef<HTMLInputElement>(null)
+
+  const { medications } = useMedicineCabinetStore()
 
   // Send a request to the OpenAI API and handle the response
   const invokeAgent = useCallback(async (messages: ReadonlyArray<BaseMessage>) => {
@@ -73,7 +67,7 @@ export const App = () => {
           <h3>Medicine Cabinet</h3>
         </div>
         <ul className="cabinet">
-          {medicineCabinet.map((medication, index) => (
+          {medications.map((medication, index) => (
             <li key={index}>
               <span>{medication.name}</span>
             </li>
