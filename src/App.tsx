@@ -19,12 +19,11 @@ export const App = () => {
 
   const { medications } = useMedicineCabinetStore()
 
-  // Send a request to the OpenAI API and handle the response
-  const invokeAgent = useCallback(async (messages: ReadonlyArray<BaseMessage>) => {
+  const invokeAgentGraph = useCallback(async (messages: ReadonlyArray<BaseMessage>) => {
     setIsLoading(true)
 
-    // Create and send a new chat completion request
-    const agentFinalState = await graph.invoke({ messages }, { configurable: { thread_id: '42' } })
+    // Invoke the agent graph with our current history of messages
+    const agentFinalState = await graph.invoke({ messages })
 
     const responseMessage = agentFinalState.messages[agentFinalState.messages.length - 1]
 
@@ -34,11 +33,10 @@ export const App = () => {
     setIsLoading(false)
   }, [])
 
-  // This effect makes sure that whenever a new message is added to the chat
-  // messages, the OpenAI API is called to get a response
+  // Whenever a new message is added to the chat by the user, the agent graph is called to get a response
   useEffect(() => {
     if (chatMessages.length > 0 && chatMessages[chatMessages.length - 1].getType() == 'human') {
-      invokeAgent(chatMessages)
+      invokeAgentGraph(chatMessages)
     }
 
     // Scroll to the bottom of the chat messages
@@ -50,7 +48,7 @@ export const App = () => {
     if (chatInputRef.current) {
       chatInputRef.current.focus()
     }
-  }, [chatMessages, invokeAgent])
+  }, [chatMessages, invokeAgentGraph])
 
   // Add user message to chat messages
   const handleUserMessage = useCallback(async (message: string) => {
