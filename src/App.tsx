@@ -5,8 +5,7 @@ import Markdown from 'react-markdown'
 import './App.css'
 
 import { BaseMessage, HumanMessage } from '@langchain/core/messages'
-import { createReactAgent } from '@langchain/langgraph/prebuilt'
-import { ChatOllama } from '@langchain/ollama'
+import { graph } from './agents/agentGraph'
 
 type Medication = {
   name: string
@@ -16,15 +15,6 @@ type Medication = {
 }
 
 const medicineCabinet: ReadonlyArray<Medication> = []
-
-const agentModel = new ChatOllama({
-  model: 'llama3.2',
-})
-
-const agent = createReactAgent({
-  llm: agentModel,
-  tools: [],
-})
 
 export const App = () => {
   const [chatInput, setChatInput] = useState('')
@@ -40,7 +30,7 @@ export const App = () => {
     setIsLoading(true)
 
     // Create and send a new chat completion request
-    const agentFinalState = await agent.invoke({ messages }, { configurable: { thread_id: '42' } })
+    const agentFinalState = await graph.invoke({ messages }, { configurable: { thread_id: '42' } })
 
     const responseMessage = agentFinalState.messages[agentFinalState.messages.length - 1]
 
@@ -92,7 +82,7 @@ export const App = () => {
       </div>
       <div className="chat-container">
         <div className="title-bar">
-          <h2>Medicine Cabinet Assistant</h2>
+          <h2>Assistant</h2>
           {isLoading ? (
             <p>Loading...</p>
           ) : (
