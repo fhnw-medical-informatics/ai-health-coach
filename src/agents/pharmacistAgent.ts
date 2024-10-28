@@ -38,7 +38,7 @@ const pharmacistAgent = createReactAgent({
   ),
 })
 
-export const pharmacistAgentNode = async (state: typeof AgentState.State, config?: RunnableConfig) => {
+export const pharmacistNode = async (state: typeof AgentState.State, config?: RunnableConfig) => {
   const result = await pharmacistAgent.invoke(state, config)
   const lastMessage = result.messages[result.messages.length - 1]
   return {
