@@ -10,13 +10,18 @@ import { AgentState } from './types'
 
 export const PHARMACIST_AGENT_NAME = 'pharmacist-agent'
 
+const MEDICATION_OBJECT_SCHEMA = z.object({
+  name: z.string(),
+  indication: z.string(),
+  dosage: z.string(),
+  usage: z.string(),
+})
+
 const addMedicationTool = new DynamicStructuredTool({
   name: 'addMedication',
   description: 'Add a medication to the cabinet',
-  schema: z.object({
-    medication: z.object({ name: z.string(), indication: z.string(), dosage: z.string(), usage: z.string() }),
-  }),
-  func: async ({ medication }) => {
+  schema: MEDICATION_OBJECT_SCHEMA,
+  func: async (medication) => {
     useMedicineCabinetStore.getState().addMedication(medication)
     return {
       messages: [
