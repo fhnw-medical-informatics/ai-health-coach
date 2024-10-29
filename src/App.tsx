@@ -85,13 +85,13 @@ export const App = () => {
         </div>
         <div ref={chatMsgContainerRef} className="chat-messages">
           {chatMessages.map((message, index) => (
-            <div key={index} className={`chat-message ${message.getType()}`}>
-              <Markdown>{`${message.content ?? ''}`}</Markdown>
-              {/* {message.getType() === 'ai' && message.tool_calls && (
-                <div className="tool-call-info">
-                  <p>Tool Call: {message.tool_calls[0]?.function.name}</p>
+            <div key={index} className={`chat-message ${message.getType()} ${message.name}`}>
+              {message.getType() === 'ai' && message.name && (
+                <div className="agent-call-info">
+                  <p>{message.name.split('-')[0].toUpperCase()}</p>
                 </div>
-              )} */}
+              )}
+              <Markdown>{`${message.content ?? ''}`}</Markdown>
             </div>
           ))}
         </div>

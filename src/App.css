@@ -84,7 +84,7 @@
 }
 
 .human {
-  background-color: #007aff;
+  background-color: grey;
   align-self: flex-end;
 }
 
@@ -93,12 +93,26 @@
   align-self: flex-start;
 }
 
+.pharmacist-agent {
+  background-color: #42a5f5;
+}
+
+.psychologist-agent {
+  background-color: #ba68c8;
+}
+
 .tool {
   font-size: 80%;
   align-self: center;
 }
 
 .tool-call-info > p {
+  font-size: 80%;
+  font-style: italic;
+  align-self: center;
+}
+
+.agent-call-info > p {
   font-size: 80%;
   font-style: italic;
   align-self: center;
