@@ -25,10 +25,10 @@ export const App = () => {
     // Invoke the agent graph with our current history of messages
     const agentFinalState = await graph.invoke({ messages })
 
-    const responseMessage = agentFinalState.messages[agentFinalState.messages.length - 1]
+    const responseMessages = agentFinalState.messages
 
-    // Add the response message to the chat messages
-    setChatMessages((currentChatMessages) => [...currentChatMessages, responseMessage])
+    // Add the agent response messages to the chat messages
+    setChatMessages((currentChatMessages) => [...currentChatMessages, ...responseMessages])
 
     setIsLoading(false)
   }, [])
