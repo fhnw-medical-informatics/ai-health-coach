@@ -12,9 +12,8 @@ export const PHARMACIST_AGENT_NAME = 'pharmacist-agent'
 
 const MEDICATION_OBJECT_SCHEMA = z.object({
   name: z.string(),
+  strength: z.string(),
   indication: z.string(),
-  dosage: z.string(),
-  usage: z.string(),
 })
 
 const addMedicationTool = new DynamicStructuredTool({
@@ -38,8 +37,9 @@ const pharmacistAgent = createReactAgent({
     `You are a pharmacist who manages a medicine cabinet. 
     Its current contents are: ${JSON.stringify(useMedicineCabinetStore.getState().medications)}. 
     Please provide responsible advice to the patient. 
-    When patients buy medications, add them to the cabinet 
-    (look up usage and dosage yourself if not provided explicitly).`,
+    When patients buy medications, add them to the cabinet:
+    - provide medication strength and indication yourself if not indicated explicitly (ask the patient if ambiguous)
+    - avoid duplicates`,
   ),
 })
 

@@ -11,11 +11,13 @@ export const SUPERVISOR_AGENT_NAME = 'supervisor'
 const members = [PSYCHOLOGIST_AGENT_NAME, PHARMACIST_AGENT_NAME] as const
 
 const systemPrompt =
-  'You are a supervisor tasked with managing a conversation between the' +
-  ' following workers: {members}. Given the following user request,' +
-  ' respond with the worker to act next. Each worker will perform a' +
-  ' task and respond with their results and status. When finished,' +
-  ' respond with FINISH.'
+  'You are a supervisor tasked with managing a conversation between the following workers:' +
+  '{members}.' +
+  'Given the following user request, respond with the worker to act next.' +
+  'Each worker will perform a task and respond with their results and status.' +
+  'When finished, respond with FINISH.' +
+  'Whenever possible, prefer a workflow which involves just one worker.' +
+  'Whenever a worker asks a question, respond with FINISH to pass it to the patient.'
 
 const options = [END, ...members]
 

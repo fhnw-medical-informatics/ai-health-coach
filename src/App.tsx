@@ -68,6 +68,10 @@ export const App = () => {
           {medications.map((medication, index) => (
             <li key={index}>
               <span>{medication.name}</span>
+              <br />
+              <div className="medication-info">
+                <span>{`${medication.strength} – ${medication.indication}`}</span>
+              </div>
             </li>
           ))}
         </ul>

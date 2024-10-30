@@ -30,21 +30,8 @@
   overflow-y: auto; /* Enables scrolling when content overflows */
 }
 
-.cabinet > li {
-  animation: colorChange 3s ease-in-out;
-}
-
-@keyframes colorChange {
-  0% {
-    color: transparent;
-  }
-  20%,
-  80% {
-    color: #ff0000;
-  }
-  100% {
-    color: inherit;
-  }
+.medication-info {
+  font-size: 50%;
 }
 
 .chat-container {
