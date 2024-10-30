@@ -1,6 +1,6 @@
-# Medicine Cabinet AI
+# AI Health Coach
 
-A multi-agent AI app based on [LangGraph](https://langchain.com/docs/langgraph/overview) to chat with your medicine cabinet.
+A multi-agent AI app based on [LangGraph](https://langchain.com/docs/langgraph/overview).
 
 ## Prerequisites
 
