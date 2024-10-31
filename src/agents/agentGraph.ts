@@ -1,8 +1,8 @@
 import { START, StateGraph } from '@langchain/langgraph/web'
 import { PHARMACIST_AGENT_NAME, pharmacistNode } from './pharmacistAgent'
 import { PSYCHOLOGIST_AGENT_NAME, psychologistNode } from './psychologistAgent'
+import { AgentState } from './shared'
 import { SUPERVISOR_AGENT_NAME, supervisorChain } from './supervisorAgent'
-import { AgentState } from './types'
 
 const workflow = new StateGraph(AgentState)
   .addNode(PSYCHOLOGIST_AGENT_NAME, psychologistNode)

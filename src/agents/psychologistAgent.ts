@@ -1,8 +1,8 @@
-import { AIMessage, SystemMessage } from '@langchain/core/messages'
+import { SystemMessage } from '@langchain/core/messages'
 import { RunnableConfig } from '@langchain/core/runnables'
 import { createReactAgent } from '@langchain/langgraph/prebuilt'
 import { createLlm } from '../llm/llm'
-import { AgentState } from './types'
+import { AgentState, nameAgentMessages } from './shared'
 
 export const PSYCHOLOGIST_AGENT_NAME = 'psychologist-agent'
 
@@ -16,8 +16,6 @@ const psychologistAgent = createReactAgent({
 
 export const psychologistNode = async (state: typeof AgentState.State, config?: RunnableConfig) => {
   const result = await psychologistAgent.invoke(state, config)
-  const lastMessage = result.messages[result.messages.length - 1]
-  return {
-    messages: [new AIMessage({ content: lastMessage.content, name: PSYCHOLOGIST_AGENT_NAME })],
-  }
+  const messages = nameAgentMessages(result.messages, PSYCHOLOGIST_AGENT_NAME)
+  return { messages }
 }

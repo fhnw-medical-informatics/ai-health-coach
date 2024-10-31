@@ -1,12 +1,11 @@
-import { createReactAgent } from '@langchain/langgraph/prebuilt'
-import { createLlm } from '../llm/llm'
-
-import { AIMessage, SystemMessage } from '@langchain/core/messages'
+import { SystemMessage } from '@langchain/core/messages'
 import { RunnableConfig } from '@langchain/core/runnables'
 import { DynamicStructuredTool } from '@langchain/core/tools'
+import { createReactAgent } from '@langchain/langgraph/prebuilt'
 import { z } from 'zod'
+import { createLlm } from '../llm/llm'
 import { useMedicineCabinetStore } from '../state/medicineCabinetStore'
-import { AgentState } from './types'
+import { AgentState, nameAgentMessages } from './shared'
 
 export const PHARMACIST_AGENT_NAME = 'pharmacist-agent'
 
@@ -22,11 +21,7 @@ const addMedicationTool = new DynamicStructuredTool({
   schema: MEDICATION_OBJECT_SCHEMA,
   func: async (medication) => {
     useMedicineCabinetStore.getState().addMedication(medication)
-    return {
-      messages: [
-        new AIMessage({ content: `Added medication ${medication.name} to cabinet`, name: PHARMACIST_AGENT_NAME }),
-      ],
-    }
+    return `Added medication ${medication.name} to cabinet`
   },
 })
 
@@ -38,15 +33,13 @@ const pharmacistAgent = createReactAgent({
     Its current contents are: ${JSON.stringify(useMedicineCabinetStore.getState().medications)}. 
     Please provide responsible advice to the patient. 
     When patients buy medications, add them to the cabinet:
-    - provide medication strength and indication yourself if not indicated explicitly (ask the patient if ambiguous)
+    - provide medication strength and indication yourself if not indicated explicitly (avoid asking the patient)
     - avoid duplicates`,
   ),
 })
 
 export const pharmacistNode = async (state: typeof AgentState.State, config?: RunnableConfig) => {
   const result = await pharmacistAgent.invoke(state, config)
-  const lastMessage = result.messages[result.messages.length - 1]
-  return {
-    messages: [new AIMessage({ content: lastMessage.content, name: PHARMACIST_AGENT_NAME })],
-  }
+  const messages = nameAgentMessages(result.messages, PHARMACIST_AGENT_NAME)
+  return { messages }
 }
