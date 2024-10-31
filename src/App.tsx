@@ -32,6 +32,7 @@ export const App = () => {
   useEffect(() => {
     if (chatMsgContainerRef.current) {
       chatMsgContainerRef.current.scrollTop = chatMsgContainerRef.current.scrollHeight
+      chatInputRef.current?.focus()
     }
   }, [isLoading, setIsLoading, chatMessages])
 
