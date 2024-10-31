@@ -87,6 +87,7 @@
 .tool {
   background-color: rgba(118, 199, 118, 0.658);
   font-style: italic;
+  align-self: flex-start;
 }
 
 .psychologist-agent {
