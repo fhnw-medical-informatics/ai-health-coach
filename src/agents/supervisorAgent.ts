@@ -17,7 +17,7 @@ const systemPrompt =
   'Each worker will perform a task and respond with their results and status.' +
   'When finished, respond with FINISH.' +
   'Whenever possible, prefer a workflow which involves just one worker.' +
-  'Try not to ignore the user request, i.e. make sure the last message is not a human message.' +
+  'Important: Try not to ignore the user request, i.e. make sure the last message is not a human message.' +
   'Whenever a worker asks a question, respond with FINISH to pass it to the patient.'
 
 const options = [END, ...members]
