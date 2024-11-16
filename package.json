@@ -1,8 +1,8 @@
 {
   "name": "ai-health-coach",
   "version": "0.1.0",
-  "author": "Rahel Lüthy",
   "private": true,
+  "author": "Rahel Lüthy",
   "type": "module",
   "scripts": {
     "build": "tsc -b && vite build",
@@ -13,11 +13,11 @@
     "test:ci": "bun test"
   },
   "dependencies": {
-    "@langchain/core": "0.3.16",
-    "@langchain/openai": "0.3.11",
-    "@langchain/ollama": "0.1.1",
-    "@langchain/community": "0.3.11",
-    "@langchain/langgraph": "0.2.18",
+    "@langchain/community": "0.3.14",
+    "@langchain/core": "0.3.18",
+    "@langchain/langgraph": "0.2.20",
+    "@langchain/ollama": "0.1.2",
+    "@langchain/openai": "0.3.13",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
@@ -25,7 +25,6 @@
     "zustand": "^5.0.0"
   },
   "devDependencies": {
-    "bun-types": "1.1.33",
     "@eslint/js": "^9.9.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.5.0",
@@ -34,6 +33,7 @@
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "bun-types": "1.1.33",
     "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
