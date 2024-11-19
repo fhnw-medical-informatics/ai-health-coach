@@ -73,7 +73,7 @@ export const App = () => {
       </div>
       <div className="chat-container">
         <div className="title-bar">
-          <h2>Assistant</h2>
+          <h2>AI Health Coach</h2>
           {isLoading ? (
             <p>Loading...</p>
           ) : (
