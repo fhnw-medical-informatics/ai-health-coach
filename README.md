@@ -9,7 +9,7 @@ A multi-agent AI app based on [LangGraph](https://langchain.com/docs/langgraph/o
 
 ## Prerequisites
 
-- [bun](https://bun.sh/docs/installation)
-- [Ollama](https://ollama.com)
+- [Bun](https://bun.sh/docs/installation)
+- OpenAI API key
 
 © 2024 FHNW Medical Informatics – Rahel Lüthy
