@@ -10,6 +10,18 @@ A multi-agent AI app based on [LangGraph](https://langchain.com/docs/langgraph/o
 ## Prerequisites
 
 - [Bun](https://bun.sh/docs/installation)
-- OpenAI API key
+- OpenAI API key (set in `.env.local`)
+
+## Initialize
+
+```bash
+bun install
+```
+
+## Run
+
+```bash
+bun run start
+```
 
 © 2024 FHNW Medical Informatics – Rahel Lüthy
