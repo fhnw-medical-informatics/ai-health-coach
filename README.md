@@ -1,6 +1,6 @@
 # AI Health Coach
 
-A multi-agent AI app based on [LangGraph](https://langchain.com/docs/langgraph/overview).
+A multi-agent AI app based on [LangGraph](https://www.langchain.com/langgraph).
 
 > **IMPORTANT**
 >
